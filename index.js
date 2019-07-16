@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
+
+app.use(cors())
 
 morgan.token('data', function getData (req) {
     return JSON.stringify(req.body)
@@ -88,19 +91,18 @@ app.post('/api/persons/', (req, res) => {
             const id = Math.random() * 10000000000000000
             const name = req.body.name
             const number = req.body.number
-            persons.concat(
-                {
-                    "name": name,
-                    "number": number,
-                    "id": id
-                }
-            )
-            res.status(200).end()
+            const newPerson =  {
+                "name": name,
+                "number": number,
+                "id": id
+            }
+            persons = persons.concat(newPerson)
+            res.json(newPerson)
         }
     }
 })
 
-const port = 3001
+const PORT = process.env.PORT || 3001
 app.listen(port, () => {
     console.log(`Server running on ${port}`)
 })
