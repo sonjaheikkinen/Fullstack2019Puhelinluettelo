@@ -1,1 +1,1 @@
-GET http://localhost:3001/api/persons
+GET https://boiling-tor-98746.herokuapp.com/api/persons
