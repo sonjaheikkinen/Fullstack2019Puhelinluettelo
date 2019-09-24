@@ -1,4 +1,9 @@
+//ÄLÄ TEE UUSIA MUUTOKSIA TÄNNE!!!!!!
+
+
+
 const mongoose = require('mongoose')
+const uniqueValidator = require('mongoose-unique-validator');
 
 const password = process.argv[2]
 const url =
@@ -6,11 +11,21 @@ const url =
 mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: String,
+  name: {
+    type: String,
+    minlength: [3, 'name must be atleast 3 characters'],
+    unique: true,
+  },
+  number: {
+    type: String,
+    minlength: 8,
+  }
 })
+personSchema.plugin(uniqueValidator);
 
 const Person = mongoose.model('Person', personSchema)
+
+/*
 
 if ( process.argv.length<3 ) {
 
@@ -41,4 +56,6 @@ if ( process.argv.length<3 ) {
   })
 
 }
+
+*/
 

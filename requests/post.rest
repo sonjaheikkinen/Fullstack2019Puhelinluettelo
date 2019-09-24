@@ -1,7 +1,7 @@
-post https://boiling-tor-98746.herokuapp.com/api/persons
+post http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "Testi Testinen",
-    "number": 111111111
+    "name": "oo",
+    "number": 111
 }
