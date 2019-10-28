@@ -1,10 +1,11 @@
 //ÄLÄ TEE UUSIA MUUTOKSIA TÄNNE!!!!!!
 
 
-
+/*
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator');
 
+// eslint-disable-next-line no-undef
 const password = process.argv[2]
 const url =
 `mongodb+srv://sonja:${password}@cluster0-evjkv.mongodb.net/phonebook?retryWrites=true&w=majority`
@@ -23,7 +24,6 @@ const personSchema = new mongoose.Schema({
 })
 personSchema.plugin(uniqueValidator);
 
-const Person = mongoose.model('Person', personSchema)
 
 /*
 
@@ -49,7 +49,6 @@ if ( process.argv.length<3 ) {
     name: process.argv[3],
     number: process.argv[4],
   })
-  
   person.save().then(response => {
     console.log(`added ${process.argv[3]} number ${process.argv[4]} to phonebook`);
     mongoose.connection.close();
